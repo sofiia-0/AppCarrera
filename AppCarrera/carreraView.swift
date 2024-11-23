@@ -27,11 +27,11 @@ struct CarreraView: View {
                 
                 // Control segmentado
                 Picker("Opciones", selection: $selectedOption) {
-                    Text("Sobre la carrera")
+                    Text("Acerca")
                         .tag(0)
-                    Text("Requisitos de admisión")
+                    Text("Requisitos")
                         .tag(1)
-                    Text("Aranceles y financiamiento")
+                    Text("Financiamiento")
                         .tag(2)
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -71,7 +71,7 @@ struct CarreraView: View {
                                 .font(.system(size: 13))
                         }
                     }
-                    .padding()
+                    .padding(30)
                     .background(Color(.systemGray6))
                     .cornerRadius(10)
                 }
@@ -81,7 +81,7 @@ struct CarreraView: View {
                     Text("Requisitos de Admisión")
                         .font(.system(size: 16, weight: .bold)) // Título en negrita
                     
-                    VStack(alignment: .leading, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 16) {
                         Text("1. Solicitud de admisión.")
                             .font(.system(size: 13))
                         Text("2. Fotocopia de cédula de identidad (estudiante y tutor).")
@@ -95,13 +95,43 @@ struct CarreraView: View {
                         Text("6. Carta de compromiso.")
                             .font(.system(size: 13))
                     }
-                    .padding()
+                    .padding(30)
                     .background(Color(.systemGray6))
                     .cornerRadius(10)
                 }
                 
-                // Mostrar contenido solo si se selecciona la opción "Sobre la carrera" o "Aranceles y financiamiento"
-                if selectedOption != 1 {
+                if selectedOption == 2 {
+                    // Aranceles y financiamiento
+                    Text("Aranceles y financiamiento")
+                        .font(.system(size: 16, weight: .bold))
+                    
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text("Prematrícula: $55 (pago único).")
+                            .font(.system(size: 13))
+                        Text("Matrícula anual: $200.")
+                            .font(.system(size: 13))
+                        Text("Arancel semestral: $1,500 (opción de financiamiento: 6 cuotas de $250/mes).")
+                            .font(.system(size: 13))
+                        
+                        Text("Otros costos opcionales:")
+                            .font(.system(size: 13))
+                            .bold()
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("• Título de grado: C$1,500")
+                                .font(.system(size: 13))
+                            Text("• Publicación de título en La Gaceta: $6")
+                                .font(.system(size: 13))
+                            Text("• Gastos de graduación: C$750")
+                                .font(.system(size: 13))
+                        }
+                    }
+                    .padding(30)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                }
+                
+                //
+                if selectedOption == 0 {
                     // Certificaciones incluidas
                     Text("Certificaciones Incluidas:")
                         .font(.system(size: 16, weight: .bold))
@@ -132,7 +162,7 @@ struct CarreraView: View {
                                 .font(.system(size: 13))
                         }
                     }
-                    .padding()
+                    .padding(30)
                     .background(Color(.systemGray6))
                     .cornerRadius(10)
                 }
@@ -166,7 +196,7 @@ struct InfoCard: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding()
+        .padding(30)
         .background(Color(.systemGray6)) // Fondo gris claro
         .cornerRadius(10)
         .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 2) // Sombra sutil
@@ -203,3 +233,4 @@ struct CarreraView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
+
